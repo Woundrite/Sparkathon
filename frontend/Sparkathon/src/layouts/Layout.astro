@@ -1,3 +1,8 @@
+---
+import "../styles/global.css";
+import {HeroUIProvider} from "@heroui/react";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,7 +13,9 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<HeroUIProvider>
+			<slot />
+		</HeroUIProvider>
 	</body>
 </html>
 
