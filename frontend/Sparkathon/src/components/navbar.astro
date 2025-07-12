@@ -1,25 +1,29 @@
 ---
 // import {Button, ButtonGroup} from "@heroui/button";
+import SignupButton from "./Signup.tsx";
 ---
 
 <div class="grid grid-cols-5 grid-rows-1 items-center">
+  <div class="col-span-1 flex justify-center text-4xl">Logo</div>
 
-	<div class="col-span-1 flex justify-center text-4xl">Logo</div>
+  <div class="col-span-3 flex justify-center gap-5">
+    <button
+      class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer"
+      >Button 1</button
+    >
 
-	<div class="col-span-3 flex justify-center gap-5">
+    <button
+      class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer"
+      >Button 2</button
+    >
 
-		
-		<button class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer">Button 1</button>
-		
-		<button class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer">Button 2</button>
+    <button
+      class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer"
+      >Button 3</button
+    >
+  </div>
 
-		<button class="px-2 py-1 text-gray-500 text-xl rounded-xl hover:cursor-pointer">Button 3</button>
-
-	</div>
-
-	<div class="col-span-1 flex justify-center py-2">
-		<button class="px-2 py-1 text-blue-500 text-xl rounded-xl border-blue-500 border-2 active:bg-blue-400 active:text-white active:border-blue hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-400">Sign In</button>
-	</div>
-	
-
+  <div class="col-span-1 flex justify-center py-2">
+    <SignupButton />
+  </div>
 </div>
