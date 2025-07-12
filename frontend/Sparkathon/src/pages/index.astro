@@ -1,16 +1,20 @@
 ---
 import Navbar from "../components/navbar.astro";
 import Layout from "../layouts/Layout.astro";
+import SignupButton from "../components/Signup.tsx";
+
 ---
 
 <Layout>
   <Navbar />
 
-  <main class="w-[90vw] mx-[5vw] border border-gray-300 rounded-full flex flex-col items-center">
+  <main class="w-[90vw] h-[100vh] mx-[5vw] my-2 gap-4 border border-gray-300 rounded-4xl flex flex-col items-center justify-center">
 
-    <div>HEADING</div>
-
-    <div>SUB HEADING</div>
+    <div class="text-7xl text-gray-800">Think, plan, and Track</div>
+    <div class="text-6xl text-gray-500">all in one place</div>
+    <div>effective management and organization of events all in one place</div>
+    <div class="mt-10"><SignupButton/></div>
+    
 
   </main>
 

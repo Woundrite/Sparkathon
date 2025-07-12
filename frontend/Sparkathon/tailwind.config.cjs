@@ -7,6 +7,7 @@ module.exports = {
     // ...
     // make sure it's pointing to the ROOT node_module
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
+    './src//*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
   ],
   theme: {
     extend: {},
