@@ -1,20 +1,14 @@
 ---
-import Inventory from "../components/Inventory"
-import Layout from "../layouts/Layout.astro"
+import Inventory from "../components/Inventory";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-
     <div>
-        <Inventory/> 
+        <Inventory client:only />
     </div>
 
-    <div>
+    <div></div>
 
-    </div>
-
-    <div>
-
-    </div>
-
+    <div></div>
 </Layout>

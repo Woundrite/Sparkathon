@@ -49,7 +49,18 @@ def create_event(request):
 		eventDate = request.data.get('date')
 		eventLocation = request.data.get('location')
 		if not all([eventName, eventDescription, eventDate, eventLocation]):
-			return Response({'error': 'All fields are required'}, status=status.HTTP_400_BAD_REQUEST)
+			# find the missing field and return an error
+			missing_fields = []
+			if not eventName:
+				missing_fields.append('name')
+			if not eventDescription:
+				missing_fields.append('description')
+			if not eventDate:
+				missing_fields.append('date')
+			if not eventLocation:
+				missing_fields.append('location')
+			
+			return Response({'error': 'All fields are required', "missing_fields": missing_fields}, status=status.HTTP_400_BAD_REQUEST)
 		event = Event.objects.create(
 			name=eventName,
 			description=eventDescription,
@@ -78,7 +89,9 @@ def create_event(request):
 @permission_classes([IsAuthenticated])
 def get_event(request, event_id):
 	# return the event with the given id along with the items associated with it and their quantities
-	event = get_object_or_404(Event, EventID=event_id)
+	event = get_object_or_404(Event, eventID=event_id)
+	if(event not in request.user.events.all()):
+		return Response({'error': 'You are not authorized to view this event'}, status=status.HTTP_403_FORBIDDEN)
 	items = ItemEvent.objects.filter(event=event)
 	items_data = []
 	for item_event in items:

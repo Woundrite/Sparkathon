@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import uuid
 
 
 class User(AbstractUser):
-	Events = models.ManyToManyField('Event', related_name='users', blank=True)
+	events = models.ManyToManyField('Event', related_name='users_events', blank=True)
 
 class Item(models.Model):
 	name = models.CharField(max_length=100)
@@ -24,7 +25,7 @@ class Event(models.Model):
 	location = models.CharField(max_length=255)
 	created_at = models.DateTimeField(auto_now_add=True)
 	# unique UUID for each event
-	eventID = models.UUIDField(primary_key=True, default=models.UUIDField().default, editable=False, unique=True)
+	eventID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
 	class Meta:
 		verbose_name_plural = "Events"
@@ -33,8 +34,8 @@ class Event(models.Model):
 		return self.name
 	
 class ItemEvent(models.Model):
-	item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='item_events')
-	event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='item_events')
+	item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='item_events_item')
+	event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='item_events_event')
 	quantity = models.PositiveIntegerField(default=1)
 	created_at = models.DateTimeField(auto_now_add=True)
 

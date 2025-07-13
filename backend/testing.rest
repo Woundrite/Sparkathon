@@ -14,4 +14,21 @@ Content-Type: application/json
 
 GET http://127.0.0.1:8000/test_token 
 Content-Type: application/json 
-Authorization: token 4684d9d20723f5e6ae4c27bea3328915550009ac
+Authorization: token 91d73773b317c9b5afecc712019dc2aaad6e9e88
+
+###
+
+POST http://127.0.0.1:8000/create_event
+Content-Type: application/json
+Authorization: token 91d73773b317c9b5afecc712019dc2aaad6e9e88
+
+{ "name": "Test Event", 
+"description": "This is a test event", 
+"location": "Test Venue", 
+"date": "2023-10-01T10:00:00Z" 
+}
+
+###
+GET http://127.0.0.1:8000/get_event/4d036e16-4521-4c33-9926-1d9e273b35eb
+Content-Type: application/json
+Authorization: token 91d73773b317c9b5afecc712019dc2aaad6e9e88

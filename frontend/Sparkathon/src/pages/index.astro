@@ -2,20 +2,22 @@
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 import Layout from "../layouts/Layout.astro";
-import Auth from "../components/auth.tsx";
+import Auth from "../components/Auth.tsx";
 ---
 
 <Layout>
-  <Navbar />
+    <Navbar />
 
-  <main
-    class="w-[90vw] h-[100vh] mx-[5vw] my-2 gap-4 border border-gray-300 rounded-4xl flex flex-col items-center justify-center"
-  >
-    <div class="text-7xl text-gray-800">Think, plan, and Track</div>
-    <div class="text-6xl text-gray-500">all in one place</div>
-    <div>effective management and organization of events all in one place</div>
-    <div class="mt-10"><Auth /></div>
-  </main>
+    <main
+        class="w-[90vw] h-[100vh] mx-[5vw] my-2 gap-4 border border-gray-300 rounded-4xl flex flex-col items-center justify-center"
+    >
+        <div class="text-7xl text-gray-800">Think, plan, and Track</div>
+        <div class="text-6xl text-gray-500">all in one place</div>
+        <div>
+            effective management and organization of events all in one place
+        </div>
+        <div class="mt-10"><Auth client:only /></div>
+    </main>
 
-  <Footer />
+    <Footer />
 </Layout>
