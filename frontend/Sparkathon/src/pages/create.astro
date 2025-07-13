@@ -5,6 +5,11 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
     <div>
-        <CreateEvent/>
+        <CreateEvent />
     </div>
+    <script>
+        if (window.localStorage.getItem("token") === null) {
+            window.location.href = "/signin";
+        }
+    </script>
 </Layout>

@@ -4,11 +4,13 @@ import Signup from "../components/Signup.tsx";
 ---
 
 <Layout>
-    <div class="maxwidth-[100vw] h-[100vh] flex justify-center items-center bg-gray-100">
-
-        <div class="border-1 w-[30vw] h-[70vh] bg-white border-gray-300 rounded-2xl">
-            <Signup/>
-        </div>
-
+  <div
+    class="maxwidth-[100vw] h-[100vh] flex justify-center items-center bg-gray-100"
+  >
+    <div
+      class="border-1 w-[30vw] h-[70vh] bg-white border-gray-300 rounded-2xl"
+    >
+      <Signup client:only />
     </div>
+  </div>
 </Layout>
