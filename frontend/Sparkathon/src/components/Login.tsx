@@ -10,7 +10,7 @@ type Inputs = {
 }
 
 
-function Signup() {
+function Login() {
 
     const {
     register,
@@ -28,7 +28,7 @@ function Signup() {
     
     <div>
 
-        <div className='text-gray-800 text-3xl flex justify-center m-4'>SIGN UP</div>
+        <div className='text-gray-800 text-3xl flex justify-center m-4'>LOG IN</div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -42,35 +42,20 @@ function Signup() {
             </div>
 
             <div className='flex flex-col gap-2'>
-                <div className='pl-2 text-lg'>username</div>
-                <div className='mx-2 py-2 bg-gray-100 rounded'>
-                    <input {...register("username", { required: true, maxLength: {value:20, message:'username too long'} })} />
-                </div>
-            </div>
-                {/* {errors.password && <span>This field is required</span>} */}
-            
-            <div className='flex flex-col gap-2'>
                 <div className='pl-2 text-lg'>password</div>
                 <div className='mx-2 py-2 bg-gray-100 rounded'>
                     <input {...register("password", {required: true})} type="password" />
                 </div>
             </div>
 
-            <div className='flex flex-col gap-2'>
-                <div className='pl-2 text-lg'>confirm password</div>
-                <div className='mx-2 py-2 bg-gray-100 rounded'>
-                    <input {...register("confirmPassword", {required: true})} type="password" />
-                </div>
-            </div>
-
             <div className='flex flex-col items-center'>
                 <div>
                     <button type="submit" className="px-2 py-1 text-gray-500 text-xl rounded-lg border-gary-500 border-1 active:bg-gray-400 active:text-white hover:bg-gray-300 hover:text-white cursor-pointer hover:border-gray-400">
-                        Sign Up
-		            </button>
+                        Log In
+                    </button>
                 </div>
                 <div>
-                    Already have an account?
+                    Do not have an account?
                 </div>
 
             </div>
@@ -83,4 +68,4 @@ function Signup() {
 }
 
 
-export default Signup
+export default Login
