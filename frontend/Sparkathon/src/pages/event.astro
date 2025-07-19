@@ -1,0 +1,20 @@
+---
+import Inventory from "../../components/Inventory";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <div>
+        <Inventory client:only="react" />
+    </div>
+
+    <script>
+        // Client-side validation and event ID extraction
+        if (typeof window !== "undefined") {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                window.location.href = "/register";
+            }
+        }
+    </script>
+</Layout>

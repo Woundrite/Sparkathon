@@ -6,11 +6,11 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
     <div>
-        <CreateButton />
+        <CreateButton client:load />
     </div>
 
     <div>
-        <EventRoom />
+        <EventRoom client:load />
     </div>
     <script>
         if (window.localStorage.getItem("token") === null) {

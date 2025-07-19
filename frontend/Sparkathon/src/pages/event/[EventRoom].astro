@@ -1,0 +1,31 @@
+---
+import Inventory from "../../components/Inventory";
+import Layout from "../../layouts/Layout.astro";
+
+// For dynamic routes, we need to provide getStaticPaths
+// Since we can't access user-specific data at build time, we'll return an empty array
+// and let the client handle the routing validation
+export function getStaticPaths() {
+    // Return empty array - all paths will be handled dynamically
+    return [];
+}
+
+const { EventRoom } = Astro.params;
+const eventID = EventRoom;
+---
+
+<Layout>
+    <div>
+        <Inventory eventID={eventID} client:only="react" />
+    </div>
+
+    <script>
+        // Client-side validation - redirect if no token
+        if (typeof window !== "undefined") {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                window.location.href = "/register";
+            }
+        }
+    </script>
+</Layout>

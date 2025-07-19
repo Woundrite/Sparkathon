@@ -12,4 +12,5 @@ urlpatterns = [
 	re_path('get_user_events', views.get_user_events),
 	re_path('add_items_to_event', views.add_items_to_event),
 	re_path('add_collaborator_to_event', views.add_collaborator_to_event),
+	re_path('get_event_uuids', views.get_event_uuids),
 ]

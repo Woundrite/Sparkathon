@@ -118,16 +118,15 @@ def get_event(request, event_id):
 def add_items_to_event(request):
 	# add an items(more than one possible at a time) to an event, if any of the item already exist, just update the quantity
 	event_id = request.data.get('event_id')
-	item_data = request.data.get('item')
-	if not event_id or not item_data:
-		return Response({'error': 'Event ID and item data are required'}, status=status.HTTP_400_BAD_REQUEST)
+	if not event_id:
+		return Response({'error': 'Event ID is required'}, status=status.HTTP_400_BAD_REQUEST)
 	
 	event = get_object_or_404(Event, id=event_id)
 	items = request.data.get('items')
 	for item in items:
-		if Item.objects.filter(name=item['name']).exists():
+		if Item.objects.filter(name=item['name'], description=item['description'], price=item['price']).exists():
 			# just get the item if it already exists and associate it with the event
-			existing_item = Item.objects.get(name=item['name'], description=item['description'])
+			existing_item = Item.objects.get(name=item['name'], description=item['description'], price=item['price'])
 			item_event = ItemEvent.objects.create(
 				item=existing_item,
 				event=event,
@@ -194,3 +193,14 @@ def add_collaborator_to_event(request, event_id):
 		return Response({'message': 'Collaborator added to event'}, status=status.HTTP_200_OK)
 	else:
 		return Response({'message': 'User already a collaborator'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_event_uuids(request):
+	# return all the event UUIDs that the user is a part of
+	user = request.user
+	events = user.events.all()
+	event_uuids = [str(event.eventID) for event in events]
+	print(event_uuids)
+	return Response({'event_uuids': event_uuids}, status=status.HTTP_200_OK)
